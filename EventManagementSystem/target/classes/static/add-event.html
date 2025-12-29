@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Event | EventWise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2 id="form-title">Add New Event</h2>
+        <hr>
+
+        <form id="eventForm">
+            <div class="form-group">
+                <label>Event ID</label>
+                <input type="number" id="id" required>
+            </div>
+
+            <div class="form-group">
+                <label>Event Name</label>
+                <input type="text" id="eventName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Event Type</label>
+                <input type="text" id="eventType" required>
+            </div>
+
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" id="location" required>
+            </div>
+
+            <div class="form-group">
+                <label>Organizer</label>
+                <input type="text" id="organizer">
+            </div>
+
+            <div class="form-group">
+                <label>Ticket Price</label>
+                <input type="number" id="ticketPrice">
+            </div>
+
+            <button class="btn btn-save" type="submit">Save Event</button>
+            <a href="index.html" class="btn btn-cancel">Back</a>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    window.onload = () => {
+        const id = new URLSearchParams(window.location.search).get("edit");
+        if (id) {
+            document.getElementById("form-title").innerText = "Update Event #" + id;
+            prefillForm(id);
+        }
+    };
+
+    document.getElementById("eventForm").addEventListener("submit", async e => {
+        e.preventDefault();
+
+        const editId = new URLSearchParams(window.location.search).get("edit");
+
+        const data = {
+            id: Number(id.value),
+            eventName: eventName.value,
+            eventType: eventType.value,
+            location: location.value,
+            organizer: organizer.value,
+            ticketPrice: Number(ticketPrice.value)
+        };
+
+        const ok = await saveEvent(data, editId);
+        if (ok) window.location.href = "index.html";
+    });
+</script>
+
+</body>
+</html>

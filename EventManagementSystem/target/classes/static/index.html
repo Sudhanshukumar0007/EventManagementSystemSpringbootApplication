@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EventWise | Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h1>🎉 EventWise</h1>
+  <a href="add-event.html" class="btn btn-add">+ Add Event</a>
+</nav>
+
+<div class="container">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Location</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="eventBody"></tbody>
+  </table>
+</div>
+
+<script src="script.js"></script>
+<script> window.onload = loadEvents; </script>
+</body>
+</html>
