@@ -1,0 +1,2 @@
+# EventManagementSystemSpringbootApplication
+Performing crud operations and creating a springboot application
